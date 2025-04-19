@@ -9,15 +9,8 @@
     body {
       margin: 0;
       background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
     .top-right-logo {
@@ -42,7 +35,7 @@
     .overlay div {
       flex: 1;
       background: #000;
-      transition: transform 1s ease-in-out;
+      transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .overlay.left {
@@ -65,54 +58,35 @@
       position: relative;
       z-index: 1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100%;
-      background: #222;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
     }
 
-    .content h1 {
+    h1 {
       font-size: 3rem;
       margin: 0;
+      color: #333;
     }
 
-    .content p {
-      font-size: 1.2rem;
-      margin: 10px 0;
+    p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: #666;
     }
 
     .link {
       margin-top: 20px;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: #00f;
       text-decoration: none;
     }
 
     .link:hover {
-      text-decoration: underline;
-    }
-
-    .links-list {
-      margin-top: 30px;
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .links-list li {
-      margin: 10px 0;
-    }
-
-    .links-list a {
-      color: #00f;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    .links-list a:hover {
       text-decoration: underline;
     }
   </style>
@@ -127,11 +101,6 @@
     <h1>002413 Music</h1>
     <p>A free music player without ads</p>
     <a href="lfn.html" class="link">Last Friday Night</a>
-    <ul class="links-list">
-      <li><a href="https://example.com/stream1" target="_blank">Stream 1</a></li>
-      <li><a href="https://example.com/stream2" target="_blank">Stream 2</a></li>
-      <li><a href="https://example.com/stream3" target="_blank">Stream 3</a></li>
-    </ul>
   </div>
 
   <script>
