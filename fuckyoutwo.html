@@ -35,10 +35,10 @@
   </audio>
 
   <script>
-    // Redirect to homepage after 5 seconds
-    setTimeout(() => {
+    // Redirect to homepage after audio ends
+    document.getElementById('bg-audio').addEventListener('ended', function() {
       window.location.href = "index.html";
-    }, 5000);
+    });
   </script>
 </body>
 </html>
