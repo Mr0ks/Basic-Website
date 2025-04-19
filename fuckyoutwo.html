@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fuckyou2</title>
+  <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      cursor: default;
+    }
+    .content {
+      text-align: center;
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <img src="assets/fuckyou2.gif" alt="Fuck You 2" />
+  </div>
+
+  <audio id="bg-audio" autoplay>
+    <source src="assets/jazz.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Redirect to homepage after 5 seconds
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 5000);
+  </script>
+</body>
+</html>
