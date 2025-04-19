@@ -3,58 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>002413 secret</title>
-  <!-- Favicon -->
+  <title>002413 Secret</title>
   <link rel="icon" href="assets/fuckyou.gif" type="image/gif" />
   <style>
     body {
       margin: 0;
       background: #000;
       overflow: hidden;
-      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      cursor: default;
     }
 
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 50%;
       height: 100%;
-      display: flex;
-      z-index: 10;
-    }
-
-    .overlay div {
-      flex: 1;
       background: #000;
-      transition: transform 1s ease-in-out;
-    }
-
-    .overlay.left {
-      transform: translateX(0);
+      z-index: 10;
+      animation: slideIn 1s forwards;
     }
 
     .overlay.right {
-      transform: translateX(0);
-    }
-
-    .overlay.slide .left {
-      transform: translateX(-100%);
-    }
-
-    .overlay.slide .right {
-      transform: translateX(100%);
+      left: 50%;
+      background: #000;
+      animation: slideInRight 1s forwards;
     }
 
     .content {
       position: relative;
       z-index: 1;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #fff;
     }
 
     .content img {
@@ -62,36 +48,38 @@
       height: auto;
     }
 
-    .caption {
-      margin-top: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #000;
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="overlay" id="overlay">
-    <div class="left"></div>
-    <div class="right"></div>
-  </div>
+  <div class="overlay"></div>
+  <div class="overlay right"></div>
   <div class="content">
     <img src="assets/fuckyou.gif" alt="Fuck You" />
-    <div class="caption">Fuck You</div>
-    <a href="pages/fuckyou2.html">Go to FuckYou2 Page</a>
   </div>
 
   <script>
-    const overlay = document.getElementById('overlay');
-    let isOverlayVisible = true;
-
-    document.body.addEventListener('click', () => {
-      if (isOverlayVisible) {
-        overlay.classList.add('slide');
-      } else {
-        overlay.classList.remove('slide');
-      }
-      isOverlayVisible = !isOverlayVisible;
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.overlay.right').style.display = 'none';
+      }, 1000);
     });
   </script>
 </body>
