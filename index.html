@@ -9,8 +9,15 @@
     body {
       margin: 0;
       background: #000;
-      overflow: hidden;
+      color: #fff;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
     }
 
     .top-right-logo {
@@ -30,12 +37,12 @@
       height: 100%;
       display: flex;
       z-index: 10;
-      transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .overlay div {
       flex: 1;
       background: #000;
+      transition: transform 1s ease-in-out;
     }
 
     .overlay.left {
@@ -58,29 +65,29 @@
       position: relative;
       z-index: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #fff;
       flex-direction: column;
-      text-align: center;
-      color: #000;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
-    .title {
-      font-size: 48px;
-      font-weight: bold;
-      margin: 20px 0;
+    .content h1 {
+      font-size: 3rem;
+      margin: 0;
     }
 
-    .description {
-      font-size: 24px;
-      margin-bottom: 40px;
+    .content p {
+      font-size: 1.2rem;
+      margin: 10px 0;
     }
 
     .link {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 1.5rem;
       color: #00f;
       text-decoration: none;
     }
@@ -89,24 +96,23 @@
       text-decoration: underline;
     }
 
-    .scroll-box {
-      height: 150px;
-      width: 300px;
-      overflow: auto;
-      border: 1px solid #ccc;
-      font: 16px/26px Georgia, Garamond, Serif;
-      background-color: #f4f4f4;
-      padding: 10px;
+    .links-list {
+      margin-top: 30px;
+      list-style-type: none;
+      padding: 0;
     }
 
-    .scroll-box a {
-      display: block;
+    .links-list li {
+      margin: 10px 0;
+    }
+
+    .links-list a {
       color: #00f;
       text-decoration: none;
-      margin: 5px 0;
+      font-size: 1.2rem;
     }
 
-    .scroll-box a:hover {
+    .links-list a:hover {
       text-decoration: underline;
     }
   </style>
@@ -118,16 +124,14 @@
     <div class="right"></div>
   </div>
   <div class="content">
-    <div class="title">002413 Music</div>
-    <div class="description">A free music player without ads</div>
+    <h1>002413 Music</h1>
+    <p>A free music player without ads</p>
     <a href="lfn.html" class="link">Last Friday Night</a>
-  </div>
-
-  <div class="scroll-box">
-    <a href="https://example1.com">MP3 Player 1</a>
-    <a href="https://example2.com">MP3 Player 2</a>
-    <a href="https://example3.com">MP3 Player 3</a>
-    <!-- Add more links as needed -->
+    <ul class="links-list">
+      <li><a href="https://example.com/stream1" target="_blank">Stream 1</a></li>
+      <li><a href="https://example.com/stream2" target="_blank">Stream 2</a></li>
+      <li><a href="https://example.com/stream3" target="_blank">Stream 3</a></li>
+    </ul>
   </div>
 
   <script>
