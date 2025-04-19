@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Last Friday Night</title>
-  <h1>Last Friday Night</h1>
   <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
   <style>
     body {
@@ -37,30 +36,40 @@
     #playButton:hover {
       background-color: #45a049;
     }
+    /* Hide the iframe to prevent it from displaying on the page */
+    #youtube-audio {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      width: 0;
+      height: 0;
+      border: 0;
+    }
   </style>
 </head>
 <body>
   <div class="content">
     <img src="assets/fuckyou2.gif" alt="Fuck You 2" />
     <button id="playButton">Play Music</button>
-    <audio id="audioPlayer" preload="auto" loop>
-      <source src="assets/lastfridaynight.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
   </div>
+
+  <!-- Embed the YouTube video -->
+  <iframe
+    id="youtube-audio"
+    src="https://www.youtube.com/embed/cEin6Kix6xs?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&showinfo=0&autohide=1"
+    allow="autoplay"
+    allowfullscreen
+  ></iframe>
 
   <script>
     const playButton = document.getElementById('playButton');
-    const audioPlayer = document.getElementById('audioPlayer');
+    const youtubeAudio = document.getElementById('youtube-audio');
 
     playButton.addEventListener('click', () => {
-      if (audioPlayer.paused) {
-        audioPlayer.play();
-        playButton.textContent = 'Pause Music';
-      } else {
-        audioPlayer.pause();
-        playButton.textContent = 'Play Music';
-      }
+      // Reload the iframe to restart the video
+      const src = youtubeAudio.src;
+      youtubeAudio.src = '';
+      youtubeAudio.src = src;
     });
   </script>
 </body>
