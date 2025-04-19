@@ -30,12 +30,12 @@
       height: 100%;
       display: flex;
       z-index: 10;
+      transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .overlay div {
       flex: 1;
       background: #000;
-      transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .overlay.left {
@@ -64,24 +64,28 @@
       background: #fff;
       flex-direction: column;
       text-align: center;
-      color: #333;
+      color: #000;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      color: #333;
+    .content img {
+      max-width: 100%;
+      height: auto;
     }
 
-    p {
-      font-size: 1.5rem;
-      margin-top: 10px;
-      color: #666;
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .description {
+      font-size: 24px;
+      margin-bottom: 40px;
     }
 
     .link {
       margin-top: 20px;
-      font-size: 1.2rem;
+      font-size: 18px;
       color: #00f;
       text-decoration: none;
     }
@@ -90,31 +94,28 @@
       text-decoration: underline;
     }
 
-    /* Scrollable links container */
-    .scroll-container {
-      width: 100%;
+    .scroll-box {
+      width: 80%;
       max-width: 600px;
       height: 200px;
-      margin-top: 30px;
-      overflow-y: auto;
+      margin: 20px auto;
       padding: 10px;
-      border: 2px solid #333;
-      background-color: #f9f9f9;
-      border-radius: 8px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      color: #000;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
-    .link-item {
-      font-size: 1.2rem;
-      color: #333;
+    .scroll-box a {
+      display: block;
+      color: #00f;
+      text-decoration: none;
       margin: 5px 0;
     }
 
-    .link-item a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .link-item a:hover {
+    .scroll-box a:hover {
       text-decoration: underline;
     }
   </style>
@@ -126,25 +127,17 @@
     <div class="right"></div>
   </div>
   <div class="content">
-    <h1>002413 Music</h1>
-    <p>A free music player without ads</p>
+    <div class="title">002413 Music</div>
+    <div class="description">A free music player without ads</div>
     <a href="lfn.html" class="link">Last Friday Night</a>
   </div>
 
-  <!-- Scrollable links container -->
-  <div class="scroll-container">
-    <div class="link-item"><a href="https://example.com/track1.mp3">Track 1</a></div>
-    <div class="link-item"><a href="https://example.com/track2.mp3">Track 2</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>
-    <div class="link-item"><a href="https://example.com/track1.mp3">Track 1</a></div>
-    <div class="link-item"><a href="https://example.com/track2.mp3">Track 2</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>    <!-- Add more links as needed -->
-    <div class="link-item"><a href="https://example.com/track1.mp3">Track 1</a></div>
-    <div class="link-item"><a href="https://example.com/track2.mp3">Track 2</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>
-    <div class="link-item"><a href="https://example.com/track3.mp3">Track 3</a></div>
+  <div class="scroll-box">
+    <a href="https://example1.com">MP3 Player 1</a>
+    <a href="https://example2.com">MP3 Player 2</a>
+    <a href="https://example3.com">MP3 Player 3</a>
+    <!-- Add more links as needed -->
+  </div>
 
   <script>
     window.addEventListener('load', () => {
