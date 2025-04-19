@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      background: #000;
+      background: #fffff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,16 +29,11 @@
     <img src="assets/fuckyou2.gif" alt="Fuck You 2" />
   </div>
 
-  <audio id="bg-audio" autoplay>
-    <source src="assets/jazz.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<audio autoplay loop>
+  <source src="assets/jazz.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-  <script>
-    // Redirect to homepage after audio ends
-    document.getElementById('bg-audio').addEventListener('ended', function() {
-      window.location.href = "index.html";
-    });
   </script>
 </body>
 </html>
