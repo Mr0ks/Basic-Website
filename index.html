@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,6 +10,15 @@ x<!DOCTYPE html>
       margin: 0;
       background: #000;
       overflow: hidden;
+    }
+
+    .top-right-logo {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+      height: auto;
+      z-index: 1000;
     }
 
     .overlay {
@@ -74,12 +83,13 @@ x<!DOCTYPE html>
   </style>
 </head>
 <body>
+  <img src="assets/fuckyou2.gif" alt="Logo" class="top-right-logo" />
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
   </div>
   <div class="content">
-    <img src="assets/fuckyou2.gif" alt="Fuck You" />
+    <img src="assets/fuckyou2.gif" alt="Main Image" />
     <a href="lfn.html" class="link">Last Friday Night</a>
   </div>
 
