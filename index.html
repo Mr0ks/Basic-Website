@@ -9,6 +9,14 @@
     body {
       margin: 0;
       background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
       overflow: hidden;
     }
 
@@ -57,27 +65,54 @@
       position: relative;
       z-index: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #fff;
       flex-direction: column;
-      text-align: center;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
-    .content img {
-      max-width: 100%;
-      height: auto;
+    .content h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      margin: 10px 0;
     }
 
     .link {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 1.5rem;
       color: #00f;
       text-decoration: none;
     }
 
     .link:hover {
+      text-decoration: underline;
+    }
+
+    .links-list {
+      margin-top: 30px;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .links-list li {
+      margin: 10px 0;
+    }
+
+    .links-list a {
+      color: #00f;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .links-list a:hover {
       text-decoration: underline;
     }
   </style>
@@ -89,8 +124,14 @@
     <div class="right"></div>
   </div>
   <div class="content">
-    <img src="assets/fuckyou2.gif" alt="Main Image" />
+    <h1>002413 Music</h1>
+    <p>A free music player without ads</p>
     <a href="lfn.html" class="link">Last Friday Night</a>
+    <ul class="links-list">
+      <li><a href="https://example.com/stream1" target="_blank">Stream 1</a></li>
+      <li><a href="https://example.com/stream2" target="_blank">Stream 2</a></li>
+      <li><a href="https://example.com/stream3" target="_blank">Stream 3</a></li>
+    </ul>
   </div>
 
   <script>
@@ -104,3 +145,4 @@
   </script>
 </body>
 </html>
+
