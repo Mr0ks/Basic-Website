@@ -52,25 +52,8 @@
     <img src="assets/fuckyou2.gif" alt="Fuck You 2" />
     <button id="playButton">Play Music</button>
   </div>
-
-  <!-- Embed the YouTube video -->
-  <iframe
-    id="youtube-audio"
-    src="https://www.youtube.com/embed/cEin6Kix6xs?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&showinfo=0&autohide=1"
-    allow="autoplay"
-    allowfullscreen
-  ></iframe>
-
-  <script>
-    const playButton = document.getElementById('playButton');
-    const youtubeAudio = document.getElementById('youtube-audio');
-
-    playButton.addEventListener('click', () => {
-      // Reload the iframe to restart the video
-      const src = youtubeAudio.src;
-      youtubeAudio.src = '';
-      youtubeAudio.src = src;
-    });
-  </script>
+    <audio controls autoplay
+      <source src="assets/lastfridaynight.mp3">
+    </audio>
 </body>
 </html>
