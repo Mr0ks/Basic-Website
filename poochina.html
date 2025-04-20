@@ -26,6 +26,12 @@
 </head>
 <body>
   <h1>Poochina</h1>
-  <img src="assets/poochina.gif" alt="Poochina">
+  <img id="mainGif" src="assets/poochina.gif" alt="Poochina">
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('mainGif').src = 'explode.gif';
+    }, 5000); // 5 seconds
+  </script>
 </body>
 </html>
