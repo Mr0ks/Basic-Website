@@ -9,7 +9,7 @@
     body {
       margin: 0;
       background: #000;
-      overflow: hidden;
+      overflow-y: auto;
       font-family: Arial, sans-serif;
     }
 
@@ -51,11 +51,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       background: #fff;
       flex-direction: column;
       text-align: center;
       color: #333;
+      padding-bottom: 100px;
     }
 
     h1 {
@@ -88,7 +89,7 @@
     <div class="right"></div>
   </div>
   <div class="content">
-    <img src="assets/fuckyou2.gif" alt="Logo" class="content" />
+    <img src="assets/fuckyou2.gif" alt="Logo" />
     <h1>002413</h1>
     <p>Random website shhh</p>
     <a href="lfn.html" class="link">Last Friday Night</a>
@@ -96,6 +97,8 @@
     <a href="suprise.html" class="link">surprise</a>
     <a href="glb.html" class="link">Good Luck Babe</a>
     
+    <!-- Add extra content to show scrolling works -->
+    <div style="height: 600px;"></div>
   </div>
 
   <script>
