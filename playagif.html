@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play a GIF</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #gifDisplay {
+      margin-top: 20px;
+    }
+    #gifDisplay img {
+      max-width: 90vw;
+      max-height: 60vh;
+    }
+  </style>
+</head>
+<body>
 
+  <input type="text" id="gifUrl" placeholder="Enter GIF URL (e.g. https://...)">
+  <button onclick="playGif()">Enter</button>
+
+  <div id="gifDisplay"></div>
+
+  <script>
+    function playGif() {
+      const url = document.getElementById("gifUrl").value;
+      const display = document.getElementById("gifDisplay");
+
+      // Clear previous gif (if any)
+      display.innerHTML = "";
+
+      // Create image element
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = "GIF";
+
+      // Add it to the page
+      display.appendChild(img);
+    }
+  </script>
+
+</body>
+</html>
