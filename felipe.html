@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Felipe</title>
-    <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
-  <!-- Google Font: Playfair Display for a fancy look -->
+  <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
+  <!-- Fancy font for title -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Cursive font for button -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     body {
       background: #f0f0f0;
@@ -16,6 +18,7 @@
       flex-direction: column;
       align-items: center;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -23,18 +26,81 @@
       font-size: 64px;
       margin-bottom: 40px;
       color: #333;
+      z-index: 1;
     }
 
-    img {
+    .floating {
       max-width: 90%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: float 3s ease-in-out infinite;
+      transition: transform 1s;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .praise-button {
+      font-family: 'Dancing Script', cursive;
+      font-size: 32px;
+      padding: 15px 30px;
+      margin-top: 40px;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1;
+    }
+
+    .praise-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .curtain {
+      position: fixed;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      background: crimson;
+      z-index: 0;
+    }
+
+    .curtain.left {
+      left: 0;
+    }
+
+    .curtain.right {
+      right: 0;
     }
   </style>
 </head>
 <body>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+
   <h1>Felipe</h1>
-  <img src="assets/450.png" alt="Felipe's Image">
+  <img id="felipeImage" class="floating" src="assets/450.png" alt="Felipe's Image">
+
+  <button class="praise-button" onclick="praiseFelipe()">Praise Felipe</button>
+
+  <script>
+    function praiseFelipe() {
+      const image = document.getElementById('felipeImage');
+      image.style.animation = 'spin 2s linear infinite';
+
+      // Add spin keyframes dynamically
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule('@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }', styleSheet.cssRules.length);
+    }
+  </script>
 </body>
 </html>
