@@ -27,6 +27,7 @@
       height: 100%;
       display: flex;
       z-index: 10;
+      pointer-events: none; /* Allow clicks to pass through */
     }
 
     .overlay .left,
@@ -95,11 +96,11 @@
       font-size: 3em;
       margin-bottom: 20px;
       opacity: 0;
+      transition: opacity 2s ease-in-out;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      transition: opacity 2s ease-in-out;
     }
 
     .felipe-text.visible {
@@ -199,7 +200,7 @@
       const praiseButton = document.getElementById('praise-button');
       const praiseText = document.getElementById('praise-text');
 
-      let isRotating = false; // Flag to prevent multiple rotations
+      let isRotating = false;
 
       setTimeout(() => {
         textContainer.classList.add('fade-in');
@@ -239,6 +240,8 @@
         if (isRotating) return;
         isRotating = true;
         felipeImage.classList.add('rotate-once');
+        praiseText.classList.add('visible');
+
         felipeImage.addEventListener('animationend', function handler() {
           felipeImage.classList.remove('rotate-once');
           isRotating = false;
