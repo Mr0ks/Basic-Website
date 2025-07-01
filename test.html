@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Felipe Tribute</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    /* Overlay styles */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .text-container {
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .text-container.fade-in {
+      opacity: 1;
+    }
+
+    .text-container.fade-out {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .title {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+    }
+
+    /* Split screen styles */
+    .left, .right {
+      position: fixed;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: black;
+      z-index: 3;
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .left {
+      left: 0;
+      transform: translateX(0);
+    }
+
+    .right {
+      right: 0;
+      transform: translateX(0);
+    }
+
+    .left.slide-out {
+      transform: translateX(-100%);
+    }
+
+    .right.slide-out {
+      transform: translateX(100%);
+    }
+
+    /* Main content */
+    .main-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .main-content.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="text-container" id="text-container">
+      <h1 class="title">prasing of the felipe</h1>
+      <p class="subtitle">you are of good cackie</p>
+    </div>
+  </div>
+  <div class="left" id="left"></div>
+  <div class="right" id="right"></div>
+  <div class="main-content" id="main-content">
+    <h1>Hi!</h1>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const textContainer = document.getElementById('text-container');
+      const left = document.getElementById('left');
+      const right = document.getElementById('right');
+      const mainContent = document.getElementById('main-content');
+
+      // Fade in text
+      setTimeout(() => {
+        textContainer.classList.add('fade-in');
+      }, 100); // slight delay to ensure CSS transition
+
+      // Fade out text after 3 seconds
+      setTimeout(() => {
+        textContainer.classList.remove('fade-in');
+        textContainer.classList.add('fade-out');
+      }, 3100); // 3s visible + 100ms initial delay
+
+      // Slide out black screen after fade out
+      setTimeout(() => {
+        left.classList.add('slide-out');
+        right.classList.add('slide-out');
+      }, 5300); // 3s visible + 2s fade out + 200ms buffer
+
+      // Show main content after slide
+      setTimeout(() => {
+        mainContent.classList.add('show');
+      }, 7000); // 3s visible + 2s fade out + 1.5s slide + 500ms buffer
+    });
+  </script>
+</body>
+</html>
