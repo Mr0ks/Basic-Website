@@ -5,18 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Felipe</title>
   <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
-  <!-- Fancy fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       background: #f0f0f0;
-      margin: 0;
-      padding: 60px 20px;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
+      justify-content: center;
+      height: 100vh;
     }
 
     h1 {
@@ -63,7 +70,7 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
-    /* Intro overlay */
+    /* Overlay styles */
     .overlay {
       position: fixed;
       top: 0;
@@ -101,10 +108,6 @@
       to { opacity: 1; }
     }
 
-    .overlay.split {
-      animation: split 1s forwards;
-    }
-
     .overlay::before,
     .overlay::after {
       content: '';
@@ -114,20 +117,35 @@
       height: 100%;
       background: black;
       z-index: 1000;
+      transition: transform 1s ease;
     }
 
     .overlay::before {
       left: 0;
+      transform: translateX(0);
     }
 
     .overlay::after {
       right: 0;
+      transform: translateX(0);
     }
 
-    @keyframes split {
-      to {
-        transform: scaleX(0);
-      }
+    .overlay.split::before {
+      transform: translateX(-100%);
+    }
+
+    .overlay.split::after {
+      transform: translateX(100%);
+    }
+
+    /* Spin animation */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spin {
+      animation: spin 2s linear infinite;
     }
   </style>
 </head>
@@ -158,10 +176,7 @@
 
     function praiseFelipe() {
       const image = document.getElementById('felipeImage');
-      image.style.animation = 'spin 2s linear infinite';
-
-      const styleSheet = document.styleSheets[0];
-      styleSheet.insertRule('@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }', styleSheet.cssRules.length);
+      image.classList.add('spin');
     }
   </script>
 </body>
