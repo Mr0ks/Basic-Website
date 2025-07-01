@@ -96,6 +96,8 @@
       margin-bottom: 20px;
       opacity: 0;
       transition: opacity 2s ease-in-out, transform 1s ease-in-out;
+      position: relative;
+      top: 0;
       transform: translateY(0);
     }
 
@@ -104,7 +106,7 @@
     }
 
     .felipe-text.moved-up {
-      transform: translateY(-50px);
+      transform: translateY(-100px);
     }
 
     .felipe-image {
@@ -218,17 +220,10 @@
         praiseButton.classList.add('visible');
       }, 9000);
 
-      praiseButton.addEventListener('click', () => {
-        if (felipeImage.classList.contains('rotate')) return;
-
-        felipeImage.classList.add('rotate');
-        praiseButton.disabled = true;
-        praiseText.classList.add('visible');
-
-        setTimeout(() => {
-          felipeImage.classList.remove('rotate');
-          praiseButton.disabled = false;
-        }, 1000);
+      // Make the button do nothing:
+      praiseButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Do nothing
       });
     });
   </script>
