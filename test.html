@@ -27,19 +27,35 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: black;
-      z-index: 3;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      z-index: 10;
+    }
+
+    .overlay .left,
+    .overlay .right {
+      flex: 1;
+      background: #000;
+      transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .overlay.slide .left {
+      transform: translateX(-100%);
+    }
+
+    .overlay.slide .right {
+      transform: translateX(100%);
     }
 
     .text-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: white;
       text-align: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
+      z-index: 11;
     }
 
     .text-container.fade-in {
@@ -57,35 +73,6 @@
 
     .subtitle {
       font-size: 1.2em;
-    }
-
-    /* Split screen styles */
-    .left, .right {
-      position: fixed;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      background-color: black;
-      z-index: 2;
-      transition: transform 1.5s ease-in-out;
-    }
-
-    .left {
-      left: 0;
-      transform: translateX(0);
-    }
-
-    .right {
-      right: 0;
-      transform: translateX(0);
-    }
-
-    .left.slide-out {
-      transform: translateX(-100%);
-    }
-
-    .right.slide-out {
-      transform: translateX(100%);
     }
 
     /* Main content */
@@ -108,22 +95,21 @@
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="text-container" id="text-container">
-      <h1 class="title">prasing of the felipe</h1>
-      <p class="subtitle">you are of good cackie</p>
-    </div>
+  <div class="overlay" id="overlay">
+    <div class="left"></div>
+    <div class="right"></div>
   </div>
-  <div class="left" id="left"></div>
-  <div class="right" id="right"></div>
+  <div class="text-container" id="text-container">
+    <h1 class="title">prasing of the felipe</h1>
+    <p class="subtitle">you are of good cackie</p>
+  </div>
   <div class="main-content" id="main-content">
     <h1>Hi!</h1>
   </div>
   <script>
     window.addEventListener('load', () => {
       const textContainer = document.getElementById('text-container');
-      const left = document.getElementById('left');
-      const right = document.getElementById('right');
+      const overlay = document.getElementById('overlay');
       const mainContent = document.getElementById('main-content');
 
       // Fade in text
@@ -139,14 +125,13 @@
 
       // Slide out black screen after fade out
       setTimeout(() => {
-        left.classList.add('slide-out');
-        right.classList.add('slide-out');
+        overlay.classList.add('slide');
       }, 5300); // 3s visible + 2s fade out + 200ms buffer
 
       // Show main content after slide
       setTimeout(() => {
         mainContent.classList.add('show');
-      }, 7000); // 3s visible + 2s fade out + 1.5s slide + 500ms buffer
+      }, 6400); // 3s visible + 2s fade out + 1s slide + 300ms buffer
     });
   </script>
 </body>
