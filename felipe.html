@@ -12,7 +12,7 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
@@ -27,8 +27,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('assets/shrine.gif') center center / cover no-repeat;
-      z-index: 0;
+      background: url('assets/caca.gif') center center / cover no-repeat;
+      z-index: 0; /* always behind */
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
@@ -94,7 +94,7 @@
 
     .main-content {
       position: relative;
-      z-index: 1;
+      z-index: 20; /* in front of shrine */
       width: 100%;
       height: 100%;
       display: flex;
@@ -119,7 +119,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
-      text-shadow: 0 0 10px #9b30ff, 0 0 20px #9b30ff, 0 0 30px #9b30ff, 0 0 40px #9b30ff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
     .felipe-text.visible {
@@ -164,18 +164,22 @@
   </style>
 </head>
 <body>
+  <!-- Shrine background -->
   <div class="shrine-bg" id="shrine-bg"></div>
 
+  <!-- Overlay panels -->
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
   </div>
 
+  <!-- Intro text -->
   <div class="text-container" id="text-container">
     <h1 class="title">prasing of the felipe</h1>
     <p class="subtitle">you are of good cackie</p>
   </div>
 
+  <!-- Main content -->
   <div class="main-content" id="main-content">
     <h1 class="felipe-text" id="felipe-text">THE OF FELIPE</h1>
     <img src="assets/450.png" alt="Felipe Image" class="felipe-image" id="felipe-image" />
@@ -205,7 +209,7 @@
 
       setTimeout(() => {
         mainContent.classList.add('show');
-        shrineBg.classList.add('show'); // Fade in the shrine background
+        shrineBg.classList.add('show'); // fade in shrine
       }, 6400);
 
       setTimeout(() => {
