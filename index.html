@@ -89,7 +89,6 @@
     h1 {
       font-size: 3rem;
       margin: 0;
-      color: #333;
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
@@ -97,7 +96,6 @@
     p {
       font-size: 1.5rem;
       margin-top: 10px;
-      color: #666;
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
@@ -148,13 +146,13 @@
     <div class="right"></div>
   </div>
 
-  <!-- Intro text on black screen -->
+  <!-- Intro text ON black screen -->
   <div class="intro-text" id="intro-text">
     <div>002413.xyz</div>
     <div>what da fweakkk</div>
   </div>
 
-  <!-- Main content that appears after split -->
+  <!-- Main content AFTER split -->
   <div class="content" id="content">
     <h1 id="main-title">002413.xyz</h1>
     <p id="main-subtitle">what da fweakkk</p>
@@ -178,40 +176,40 @@
       const mainSubtitle = document.getElementById('main-subtitle');
       const links = document.getElementById('links');
 
-      // Fade in intro text
+      // 1️⃣ Fade in intro text on black
       setTimeout(() => {
         introText.classList.add('fade-in');
       }, 100);
 
-      // Fade out intro text
+      // 2️⃣ Fade out intro text
       setTimeout(() => {
         introText.classList.remove('fade-in');
         introText.classList.add('fade-out');
       }, 3100);
 
-      // Split overlay panels
+      // 3️⃣ Split overlay panels
       setTimeout(() => {
         overlay.classList.add('slide');
       }, 5300);
 
-      // Show main content container
+      // 4️⃣ Show main content background
       setTimeout(() => {
         content.classList.add('show');
       }, 6400);
 
-      // Fade in main title and subtitle
+      // 5️⃣ Fade in main title + subtitle
       setTimeout(() => {
         mainTitle.style.opacity = '1';
         mainSubtitle.style.opacity = '1';
       }, 7000);
 
-      // Move up main title and subtitle
+      // 6️⃣ Move up title + subtitle
       setTimeout(() => {
         mainTitle.classList.add('move-up');
         mainSubtitle.classList.add('move-up');
       }, 8000);
 
-      // Fade in links
+      // 7️⃣ Fade in links under them
       setTimeout(() => {
         links.classList.add('show');
       }, 8500);
