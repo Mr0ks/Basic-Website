@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      background: #000; /* fallback */
+      background: #000;
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
@@ -22,7 +22,7 @@
       z-index: 1000;
     }
 
-    /* ✅ Proper split overlay: two panels */
+    /* ✅ Overlay split panels */
     .overlay {
       position: fixed;
       top: 0;
@@ -49,27 +49,6 @@
       transform: translateX(100%);
     }
 
-    .intro-text {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      font-size: 2rem;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-      z-index: 20;
-    }
-
-    .intro-text.fade-in {
-      opacity: 1;
-    }
-
-    .intro-text.fade-out {
-      opacity: 0;
-    }
-
     .content {
       position: relative;
       z-index: 1;
@@ -77,62 +56,30 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #fff; /* main content background */
+      background: #fff;
       flex-direction: column;
       text-align: center;
       color: #333;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .content.show {
-      opacity: 1;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
+      color: #333;
     }
 
     p {
       font-size: 1.5rem;
       margin-top: 10px;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .move-up {
-      animation: moveUp 1s ease-in-out forwards;
-    }
-
-    @keyframes moveUp {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(-50px);
-      }
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 30px;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .links.show {
-      opacity: 1;
+      color: #666;
     }
 
     .link {
+      margin-top: 20px;
       font-size: 1.2rem;
       color: #00f;
       text-decoration: none;
+      display: block;
     }
 
     .link:hover {
@@ -143,79 +90,37 @@
 <body>
   <img src="assets/fuckyou2.gif" alt="Logo" class="top-right-logo" />
 
-  <!-- ✅ Black screen split panels -->
+  <!-- ✅ Proper split overlay -->
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
   </div>
 
-  <!-- Intro text on top of split panels -->
-  <div class="intro-text" id="intro-text">
-    <div>002413.xyz</div>
-    <div>what da fweakkk</div>
-  </div>
-
-  <!-- ✅ Revealed main content -->
-  <div class="content" id="content">
-    <h1 id="main-title">002413.xyz</h1>
-    <p id="main-subtitle">what da fweakkk</p>
-    <div class="links" id="links">
-      <a href="lfn.html" class="link">Last Friday Night</a>
-      <a href="poochina.html" class="link">Scream Page</a>
-      <a href="suprise.html" class="link">Surprise</a>
-      <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
-      <a href="felipe.html" class="link">Divine Felipe Temple</a>
-      <a href="bailey.html" class="link">Ethereal Praising of Bailey</a>
-      <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
-    </div>
+  <div class="content">
+    <h1>002413.xyz</h1>
+    <p>what da fweakkk</p>
+    <a href="lfn.html" class="link">Last Friday Night</a>
+    <a href="poochina.html" class="link">scream page</a>
+    <a href="suprise.html" class="link">suprise</a>
+    <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
+    <a href="felipe.html" class="link">Divine Felipe Temple</a>
+    <a href="bailey.html" class="link">Etherial Praising of Bailey</a>
+    <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
   </div>
 
   <script>
     window.addEventListener('load', () => {
       const overlay = document.getElementById('overlay');
-      const introText = document.getElementById('intro-text');
-      const content = document.getElementById('content');
-      const mainTitle = document.getElementById('main-title');
-      const mainSubtitle = document.getElementById('main-subtitle');
-      const links = document.getElementById('links');
 
-      // ✅ 1: Fade in intro text
-      setTimeout(() => {
-        introText.classList.add('fade-in');
-      }, 100);
-
-      // ✅ 2: Fade out intro text
-      setTimeout(() => {
-        introText.classList.remove('fade-in');
-        introText.classList.add('fade-out');
-      }, 3100);
-
-      // ✅ 3: Split panels left + right
+      // ✅ Trigger the slide split
       setTimeout(() => {
         overlay.classList.add('slide');
-      }, 5300);
+      }, 500); // small delay so it doesn't split instantly
 
-      // ✅ 4: Show content background
+      // ✅ Remove panels fully after split
       setTimeout(() => {
-        content.classList.add('show');
-      }, 6400);
-
-      // ✅ 5: Fade in title/subtitle
-      setTimeout(() => {
-        mainTitle.style.opacity = '1';
-        mainSubtitle.style.opacity = '1';
-      }, 7000);
-
-      // ✅ 6: Move up
-      setTimeout(() => {
-        mainTitle.classList.add('move-up');
-        mainSubtitle.classList.add('move-up');
-      }, 8000);
-
-      // ✅ 7: Fade in links
-      setTimeout(() => {
-        links.classList.add('show');
-      }, 8500);
+        overlay.style.display = 'none';
+      }, 2000); // matches transition duration
     });
   </script>
 </body>
