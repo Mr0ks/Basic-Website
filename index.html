@@ -119,7 +119,7 @@
 
     .link {
       font-size: 1.2rem;
-      color: #00f;
+      color: #0af;
       text-decoration: none;
     }
 
@@ -135,10 +135,10 @@
     <div class="right"></div>
   </div>
 
-  <!-- Intro text -->
+  <!-- Intro fade-in text -->
   <div class="intro-text" id="intro-text">002413.xyz</div>
 
-  <!-- Main content -->
+  <!-- Main content after split -->
   <div class="main-content" id="main-content">
     <h1 class="main-title" id="main-title">002413.xyz</h1>
     <div class="links" id="links">
@@ -160,38 +160,38 @@
       const mainTitle = document.getElementById('main-title');
       const links = document.getElementById('links');
 
-      // Intro fade in
+      // Fade in intro text
       setTimeout(() => {
         introText.classList.add('fade-in');
       }, 100);
 
-      // Intro fade out
+      // Fade out intro text
       setTimeout(() => {
         introText.classList.remove('fade-in');
         introText.classList.add('fade-out');
       }, 3100);
 
-      // Overlay slide
+      // Split overlay
       setTimeout(() => {
         overlay.classList.add('slide');
       }, 5300);
 
-      // Show main content background
+      // Show main content container
       setTimeout(() => {
         mainContent.classList.add('show');
       }, 6400);
 
-      // Main title fade in
+      // Fade in main title
       setTimeout(() => {
         mainTitle.classList.add('visible');
       }, 7000);
 
-      // Main title move up
+      // Move up main title
       setTimeout(() => {
         mainTitle.classList.add('move-up');
       }, 8000);
 
-      // Links fade in
+      // Fade in links
       setTimeout(() => {
         links.classList.add('show');
       }, 8500);
