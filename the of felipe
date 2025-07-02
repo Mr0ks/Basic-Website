@@ -175,13 +175,13 @@
 
   <!-- Intro text -->
   <div class="text-container" id="text-container">
-    <h1 class="title">prasing of the felipe</h1>
-    <p class="subtitle">you are of good cackie</p>
+    <h1 class="title">Prasing of the felipe</h1>
+    <p class="subtitle">You are of good cackie</p>
   </div>
 
   <!-- Main content -->
   <div class="main-content" id="main-content">
-    <h1 class="felipe-text" id="felipe-text">THE OF FELIPE</h1>
+    <h1 class="felipe-text" id="felipe-text">SHRINE OF THE FELIPE</h1>
     <img src="assets/450.png" alt="Felipe Image" class="felipe-image" id="felipe-image" />
   </div>
 
