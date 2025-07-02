@@ -11,6 +11,7 @@
       background: #000;
       overflow: hidden;
       font-family: Arial, sans-serif;
+      color: #fff;
     }
 
     .top-right-logo {
@@ -38,14 +39,6 @@
       transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    .overlay.left {
-      transform: translateX(0);
-    }
-
-    .overlay.right {
-      transform: translateX(0);
-    }
-
     .overlay.slide .left {
       transform: translateX(-100%);
     }
@@ -61,26 +54,45 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #fff;
       flex-direction: column;
       text-align: center;
-      color: #333;
+      opacity: 0;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0;
-      color: #333;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
     }
 
-    p {
-      font-size: 1.5rem;
-      margin-top: 10px;
-      color: #666;
+    h1.move-up {
+      animation: moveUp 1s ease-in-out forwards;
+    }
+
+    @keyframes moveUp {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-100px);
+      }
+    }
+
+    .links {
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .links.show {
+      opacity: 1;
     }
 
     .link {
-      margin-top: 20px;
       font-size: 1.2rem;
       color: #00f;
       text-decoration: none;
@@ -89,33 +101,57 @@
     .link:hover {
       text-decoration: underline;
     }
+
+    p {
+      display: none; /* removed, not needed in this version */
+    }
   </style>
 </head>
 <body>
   <img src="assets/fuckyou2.gif" alt="Logo" class="top-right-logo" />
+
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
   </div>
-  <div class="content">
-    <h1>002413.xyz</h1>
-    <p>what da fweakkk</p>
-    <a href="lfn.html" class="link">Last Friday Night</a>
-    <a href="poochina.html" class="link">scream page</a>
-    <a href="suprise.html" class="link">suprise</a>
-    <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
-    <a href="felipe.html" class="link">Divine Felipe Temple</a>
-    <a href="bailey.html" class="link">Etherial Prasing of Bailey</a>
-    <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
+
+  <div class="content" id="content">
+    <h1 id="main-title">002413.xyz</h1>
+    <div class="links" id="links">
+      <a href="lfn.html" class="link">Last Friday Night</a>
+      <a href="poochina.html" class="link">Scream Page</a>
+      <a href="suprise.html" class="link">Surprise</a>
+      <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
+      <a href="felipe.html" class="link">Divine Felipe Temple</a>
+      <a href="bailey.html" class="link">Ethereal Praising of Bailey</a>
+      <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
+    </div>
   </div>
 
   <script>
     window.addEventListener('load', () => {
       const overlay = document.getElementById('overlay');
+      const mainTitle = document.getElementById('main-title');
+      const links = document.getElementById('links');
+      const content = document.getElementById('content');
+
+      // Slide overlay away
       overlay.classList.add('slide');
+
+      // Fade in title
       setTimeout(() => {
-        overlay.style.display = 'none';
+        mainTitle.style.opacity = 1;
       }, 1000);
+
+      // Move title up
+      setTimeout(() => {
+        mainTitle.classList.add('move-up');
+      }, 3000);
+
+      // Fade in links
+      setTimeout(() => {
+        links.classList.add('show');
+      }, 4500);
     });
   </script>
 </body>
