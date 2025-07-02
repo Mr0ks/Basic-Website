@@ -52,15 +52,21 @@
     .content {
       position: relative;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
       background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       text-align: center;
       color: #333;
-      overflow: hidden;
+    }
+
+    .main-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(0);
     }
 
     h1, p {
@@ -75,7 +81,7 @@
 
     p {
       font-size: 1.5rem;
-      margin-top: 10px;
+      margin: 10px 0 0 0;
     }
 
     .fade-in {
@@ -125,8 +131,10 @@
   </div>
 
   <div class="content">
-    <h1 id="main-title">002413.xyz</h1>
-    <p id="main-subtitle">what da fweakkk</p>
+    <div class="main-text" id="main-text">
+      <h1 id="main-title">002413.xyz</h1>
+      <p id="main-subtitle">what da fweakkk</p>
+    </div>
     <div class="links" id="links">
       <a href="lfn.html" class="link">Last Friday Night</a>
       <a href="poochina.html" class="link">scream page</a>
@@ -141,33 +149,33 @@
   <script>
     window.addEventListener('load', () => {
       const overlay = document.getElementById('overlay');
+      const mainText = document.getElementById('main-text');
       const mainTitle = document.getElementById('main-title');
       const mainSubtitle = document.getElementById('main-subtitle');
       const links = document.getElementById('links');
 
-      // ✅ 1: Split the black screen
+      // 1️⃣ Split the black screen
       setTimeout(() => {
         overlay.classList.add('slide');
       }, 500);
 
-      // ✅ 2: Remove overlay from flow after split
+      // 2️⃣ Remove overlay after split
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 2000);
 
-      // ✅ 3: Fade in title and subtitle
+      // 3️⃣ Fade in title and subtitle
       setTimeout(() => {
         mainTitle.classList.add('fade-in');
         mainSubtitle.classList.add('fade-in');
       }, 2100);
 
-      // ✅ 4: Move them up
+      // 4️⃣ Move them up as a block
       setTimeout(() => {
-        mainTitle.classList.add('move-up');
-        mainSubtitle.classList.add('move-up');
+        mainText.classList.add('move-up');
       }, 3200);
 
-      // ✅ 5: Fade in links under them
+      // 5️⃣ Fade in links under
       setTimeout(() => {
         links.classList.add('show');
       }, 4000);
