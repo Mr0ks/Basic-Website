@@ -114,13 +114,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: white; /* White text */
+      color: white;
       text-shadow:
         0 0 5px #b500f9,
         0 0 10px #b500f9,
         0 0 20px #b500f9,
         0 0 40px #b500f9,
-        2px 2px 4px rgba(0,0,0,0.5); /* Subtle dark shadow */
+        2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .felipe-text.visible {
@@ -236,41 +236,62 @@
       const sideImageLeft = document.getElementById('side-image-left');
       const sideImageRight = document.getElementById('side-image-right');
 
-      setTimeout(() => {
-        textContainer.classList.add('fade-in');
-      }, 100);
+      const images = [
+        'assets/bailey 1.png',
+        'assets/bailey 2.png',
+        'assets/bailey 3.png',
+        'assets/cat.gif'
+      ];
 
-      setTimeout(() => {
-        textContainer.classList.remove('fade-in');
-        textContainer.classList.add('fade-out');
-      }, 3100);
+      let loaded = 0;
 
-      setTimeout(() => {
-        overlay.classList.add('slide');
-      }, 5300);
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          loaded++;
+          if (loaded === images.length) {
+            startAnimation();
+          }
+        };
+      });
 
-      setTimeout(() => {
-        mainContent.classList.add('show');
-        shrineBg.classList.add('show');
-      }, 6400);
+      function startAnimation() {
+        setTimeout(() => {
+          textContainer.classList.add('fade-in');
+        }, 100);
 
-      setTimeout(() => {
-        felipeText.classList.add('visible');
-      }, 7000);
+        setTimeout(() => {
+          textContainer.classList.remove('fade-in');
+          textContainer.classList.add('fade-out');
+        }, 3100);
 
-      setTimeout(() => {
-        felipeText.classList.add('move-up');
-      }, 8000);
+        setTimeout(() => {
+          overlay.classList.add('slide');
+        }, 5300);
 
-      setTimeout(() => {
-        felipeImage.classList.add('visible');
-      }, 8500);
+        setTimeout(() => {
+          mainContent.classList.add('show');
+          shrineBg.classList.add('show');
+        }, 6400);
 
-      setTimeout(() => {
-        sideImageLeft.classList.add('show-left');
-        sideImageRight.classList.add('show-right');
-      }, 10000);
+        setTimeout(() => {
+          felipeText.classList.add('visible');
+        }, 7000);
 
+        setTimeout(() => {
+          felipeText.classList.add('move-up');
+        }, 8000);
+
+        setTimeout(() => {
+          felipeImage.classList.add('visible');
+        }, 8500);
+
+        setTimeout(() => {
+          sideImageLeft.classList.add('show-left');
+          sideImageRight.classList.add('show-right');
+        }, 10000);
+      }
     });
   </script>
 </body>
