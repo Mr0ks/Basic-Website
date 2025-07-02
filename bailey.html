@@ -96,10 +96,6 @@
       z-index: 20;
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
@@ -145,9 +141,12 @@
       height: auto;
       opacity: 0;
       transition: opacity 2s ease-in-out;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       border-radius: 15px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      position: relative;
       z-index: 2;
     }
 
@@ -161,7 +160,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* start exactly on top of middle image */
+      transform: translate(-50%, -50%);
       opacity: 0;
       border-radius: 15px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -210,14 +209,14 @@
 
   <div class="text-container" id="text-container">
     <h1 class="title">Bailey is a girl</h1>
-    <p class="subtitle">im scared of bailey please dont do anything to me</p>
+    <p class="subtitle">I'm scared of Bailey please don't do anything to me</p>
   </div>
 
   <div class="main-content" id="main-content">
     <h1 class="felipe-text" id="felipe-text">SHRINE OF THE BAILEY</h1>
-    <img src="assets/jacob.png" alt="Jacob Image" class="felipe-image" id="felipe-image" />
-    <img src="assets/jacob.png" alt="Jacob Left" class="side-image" id="side-image-left" />
-    <img src="assets/jacob.png" alt="Jacob Right" class="side-image" id="side-image-right" />
+    <img src="assets/bailey.png" alt="Bailey Image" class="felipe-image" id="felipe-image" />
+    <img src="assets/bailey.png" alt="Bailey Left" class="side-image" id="side-image-left" />
+    <img src="assets/bailey.png" alt="Bailey Right" class="side-image" id="side-image-right" />
   </div>
 
   <script>
