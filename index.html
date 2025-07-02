@@ -22,7 +22,7 @@
       z-index: 1000;
     }
 
-    /* ✅ Overlay split panels */
+    /* ✅ Split overlay panels */
     .overlay {
       position: fixed;
       top: 0;
@@ -53,33 +53,61 @@
       position: relative;
       z-index: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       background: #fff;
-      flex-direction: column;
       text-align: center;
       color: #333;
+      overflow: hidden;
+    }
+
+    h1, p {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0;
-      color: #333;
     }
 
     p {
       font-size: 1.5rem;
       margin-top: 10px;
-      color: #666;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    .move-up {
+      animation: moveUp 1s ease-in-out forwards;
+    }
+
+    @keyframes moveUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50px); }
+    }
+
+    .links {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .links.show {
+      opacity: 1;
     }
 
     .link {
-      margin-top: 20px;
       font-size: 1.2rem;
       color: #00f;
       text-decoration: none;
-      display: block;
     }
 
     .link:hover {
@@ -90,37 +118,59 @@
 <body>
   <img src="assets/fuckyou2.gif" alt="Logo" class="top-right-logo" />
 
-  <!-- ✅ Proper split overlay -->
+  <!-- ✅ Split overlay panels -->
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
   </div>
 
   <div class="content">
-    <h1>002413.xyz</h1>
-    <p>what da fweakkk</p>
-    <a href="lfn.html" class="link">Last Friday Night</a>
-    <a href="poochina.html" class="link">scream page</a>
-    <a href="suprise.html" class="link">suprise</a>
-    <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
-    <a href="felipe.html" class="link">Divine Felipe Temple</a>
-    <a href="bailey.html" class="link">Etherial Praising of Bailey</a>
-    <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
+    <h1 id="main-title">002413.xyz</h1>
+    <p id="main-subtitle">what da fweakkk</p>
+    <div class="links" id="links">
+      <a href="lfn.html" class="link">Last Friday Night</a>
+      <a href="poochina.html" class="link">scream page</a>
+      <a href="suprise.html" class="link">suprise</a>
+      <a href="jacob.html" class="link">Holy Shrine of Jacob</a>
+      <a href="felipe.html" class="link">Divine Felipe Temple</a>
+      <a href="bailey.html" class="link">Etherial Praising of Bailey</a>
+      <a href="charlie.html" class="link">The Please Burger Cheese of Charlie</a>
+    </div>
   </div>
 
   <script>
     window.addEventListener('load', () => {
       const overlay = document.getElementById('overlay');
+      const mainTitle = document.getElementById('main-title');
+      const mainSubtitle = document.getElementById('main-subtitle');
+      const links = document.getElementById('links');
 
-      // ✅ Trigger the slide split
+      // ✅ 1: Split the black screen
       setTimeout(() => {
         overlay.classList.add('slide');
-      }, 500); // small delay so it doesn't split instantly
+      }, 500);
 
-      // ✅ Remove panels fully after split
+      // ✅ 2: Remove overlay from flow after split
       setTimeout(() => {
         overlay.style.display = 'none';
-      }, 2000); // matches transition duration
+      }, 2000);
+
+      // ✅ 3: Fade in title and subtitle
+      setTimeout(() => {
+        mainTitle.classList.add('fade-in');
+        mainSubtitle.classList.add('fade-in');
+      }, 2100);
+
+      // ✅ 4: Move them up
+      setTimeout(() => {
+        mainTitle.classList.add('move-up');
+        mainSubtitle.classList.add('move-up');
+      }, 3200);
+
+      // ✅ 5: Fade in links under them
+      setTimeout(() => {
+        links.classList.add('show');
+      }, 4000);
     });
   </script>
 </body>
