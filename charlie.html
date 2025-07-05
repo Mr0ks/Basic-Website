@@ -1,30 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charlie Tribute</title>
+  <link rel="icon" href="assets/fuckyou2.gif" type="image/gif" />
+
+  <!-- Google Font: Edu NSW ACT Cursive -->
+  <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: white;
+    }
+
+    .shrine-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/grandma.gif') center center / cover no-repeat;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .shrine-bg.show {
+      opacity: 1;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .overlay .left,
+    .overlay .right {
+      flex: 1;
+      background: #000;
+      transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .overlay.slide .left {
+      transform: translateX(-100%);
+    }
+
+    .overlay.slide .right {
+      transform: translateX(100%);
+    }
+
+    .text-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      z-index: 100;
+    }
+
+    .text-container.fade-in {
+      opacity: 1;
+    }
+
+    .text-container.fade-out {
+      opacity: 0;
+    }
+
+    .title {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .main-content.show {
+      opacity: 1;
+    }
+
+    .felipe-text {
+      font-family: 'Edu NSW ACT Cursive', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow:
+        0 0 5px #b500f9,
+        0 0 10px #b500f9,
+        0 0 20px #b500f9,
+        0 0 40px #b500f9,
+        2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .felipe-text.visible {
+      opacity: 1;
+    }
+
+    .felipe-text.move-up {
+      animation: moveUp 1s ease-in-out forwards;
+    }
+
+    @keyframes moveUp {
+      from {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: 100px;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    .felipe-image {
+      width: 350px;
+      height: auto;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    .felipe-image.visible {
+      opacity: 1;
+    }
+
+    .side-image {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+
+    .side-image.show-left {
+      animation: slideLeft 1.5s ease-in-out forwards;
+    }
+
+    .side-image.show-right {
+      animation: slideRight 1.5s ease-in-out forwards;
+    }
+
+    @keyframes slideLeft {
+      0% {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-150%, -50%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideRight {
+      0% {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(50%, -50%);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
 <body>
-  <!-- PASSWORD OVERLAY -->
+  <!-- ✅ PASSWORD OVERLAY -->
   <div id="password-overlay" style="
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    background: black; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     z-index: 9999;">
-    <input 
-      type="password" 
-      id="password-input" 
-      placeholder="Enter password" 
-      style="padding: 10px; font-size: 18px;"/>
-    <button 
-      id="submit-password" 
+    <input
+      type="password"
+      id="password-input"
+      placeholder="Enter password"
+      style="padding: 10px; font-size: 18px;">
+    <button
+      id="submit-password"
       style="margin-top: 20px; padding: 10px 20px; font-size: 18px; cursor: pointer;">
       Submit
     </button>
     <p id="password-error" style="color: red; margin-top: 10px; display: none;">Incorrect password.</p>
   </div>
 
-  <!-- Your existing shrine + overlay + content -->
+  <!-- ✅ YOUR ORIGINAL CONTENT -->
   <div class="shrine-bg" id="shrine-bg"></div>
+
   <div class="overlay" id="overlay">
     <div class="left"></div>
     <div class="right"></div>
@@ -43,21 +254,28 @@
   </div>
 
   <script>
+    // ✅ NEW password logic
     const passwordOverlay = document.getElementById('password-overlay');
     const passwordInput = document.getElementById('password-input');
     const submitPassword = document.getElementById('submit-password');
     const passwordError = document.getElementById('password-error');
 
+    let allowIntro = false;
+
     submitPassword.addEventListener('click', () => {
       if (passwordInput.value === 'maxisagooner') {
         passwordOverlay.style.display = 'none';
-        preloadAndStart();
+        allowIntro = true;
+        if (allImagesLoaded) {
+          startAnimation();
+        }
       } else {
         passwordError.style.display = 'block';
       }
     });
 
-    function preloadAndStart() {
+    // ✅ ✅ ✅ YOUR ORIGINAL SCRIPT — UNCHANGED EXCEPT `startAnimation` only runs if allowed
+    window.addEventListener('load', () => {
       const textContainer = document.getElementById('text-container');
       const overlay = document.getElementById('overlay');
       const mainContent = document.getElementById('main-content');
@@ -75,6 +293,7 @@
       ];
 
       let loaded = 0;
+      window.allImagesLoaded = false;
 
       images.forEach(src => {
         const img = new Image();
@@ -82,7 +301,10 @@
         img.onload = () => {
           loaded++;
           if (loaded === images.length) {
-            startAnimation();
+            window.allImagesLoaded = true;
+            if (allowIntro) {
+              startAnimation();
+            }
           }
         };
       });
@@ -123,6 +345,7 @@
           sideImageRight.classList.add('show-right');
         }, 10000);
       }
-    }
+    });
   </script>
 </body>
+</html>
