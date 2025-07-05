@@ -209,31 +209,6 @@
   </style>
 </head>
 <body>
-  <!-- ✅ PASSWORD OVERLAY -->
-  <div id="password-overlay" style="
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;">
-    <input
-      type="password"
-      id="password-input"
-      placeholder="Enter password"
-      style="padding: 10px; font-size: 18px;">
-    <button
-      id="submit-password"
-      style="margin-top: 20px; padding: 10px 20px; font-size: 18px; cursor: pointer;">
-      Submit
-    </button>
-    <p id="password-error" style="color: red; margin-top: 10px; display: none;">Incorrect password.</p>
-  </div>
-
-  <!-- ✅ YOUR ORIGINAL CONTENT -->
   <div class="shrine-bg" id="shrine-bg"></div>
 
   <div class="overlay" id="overlay">
@@ -254,27 +229,6 @@
   </div>
 
   <script>
-    // ✅ NEW password logic
-    const passwordOverlay = document.getElementById('password-overlay');
-    const passwordInput = document.getElementById('password-input');
-    const submitPassword = document.getElementById('submit-password');
-    const passwordError = document.getElementById('password-error');
-
-    let allowIntro = false;
-
-    submitPassword.addEventListener('click', () => {
-      if (passwordInput.value === 'maxisagooner') {
-        passwordOverlay.style.display = 'none';
-        allowIntro = true;
-        if (allImagesLoaded) {
-          startAnimation();
-        }
-      } else {
-        passwordError.style.display = 'block';
-      }
-    });
-
-    // ✅ ✅ ✅ YOUR ORIGINAL SCRIPT — UNCHANGED EXCEPT `startAnimation` only runs if allowed
     window.addEventListener('load', () => {
       const textContainer = document.getElementById('text-container');
       const overlay = document.getElementById('overlay');
@@ -293,7 +247,6 @@
       ];
 
       let loaded = 0;
-      window.allImagesLoaded = false;
 
       images.forEach(src => {
         const img = new Image();
@@ -301,10 +254,7 @@
         img.onload = () => {
           loaded++;
           if (loaded === images.length) {
-            window.allImagesLoaded = true;
-            if (allowIntro) {
-              startAnimation();
-            }
+            startAnimation();
           }
         };
       });
@@ -349,3 +299,5 @@
   </script>
 </body>
 </html>
+
+
